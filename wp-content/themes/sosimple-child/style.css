@@ -1,5 +1,5 @@
 /*
- Theme Name:   DaniWebDev
+ Theme Name:   WebDev Dani
  Theme URI:    http://localhost:8888/daniwebdev
  Description:  SoSimple Child Theme
  Author:       Danielle Alexis
@@ -11,3 +11,4 @@
  Tags:         light, dark, two-columns, right-sidebar, responsive-layout, accessibility-ready
  Text Domain:  sosimple-child
 */
+h1{color:#49ee3f !important}
