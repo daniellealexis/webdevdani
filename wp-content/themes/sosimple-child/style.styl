@@ -13,11 +13,56 @@
 */
 
 /*
-Compiling command:
+Compiling commands:
 //stylus -c  wp-content/themes/sosimple-child
+//stylus -w  wp-content/themes/sosimple-child
 */
 
 $color = #49ee3f
+$highlight = #9F6B78
+$borderColor = #EEEEEE
+
 
 h1
     color $color !important
+ul
+    list-style none
+    margin 0
+
+body
+    background-color #ffffff
+
+
+
+////Header
+.site-header
+    padding-bottom 0
+.site-branding
+    > *
+        display inline-block
+    hgroup
+        height 56px
+        vertical-align top
+        width 250px
+        .site-title
+            line-height @height
+
+.header-side
+    width calc(50% - 130px)
+    &.left
+        border-right 3px solid $borderColor
+    &.right
+        border-left 3px solid $borderColor
+    ul //header-side
+        &.header-side-top
+            border-bottom 3px solid $borderColor
+        li.header-side-item
+            display inline-block
+            padding-left 1em
+
+
+.main-navigation
+    padding-top 0
+.main-navigation
+.site-header
+    border-color $borderColor

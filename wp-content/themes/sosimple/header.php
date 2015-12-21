@@ -25,9 +25,9 @@
 	<header id="masthead" class="site-header" role="banner">
 		<div class="site-branding">
 			<?php if ( function_exists( 'jetpack_the_site_logo' ) ) jetpack_the_site_logo(); ?>
-			
+
 			<?php if ( get_theme_mod( 'sosimple_logo' ) ) : ?>
-		    
+
 		    <div class='site-logo'>
 		        <a href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' rel='home'><img src='<?php echo esc_url( get_theme_mod( 'sosimple_logo' ) ); ?>' alt='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>'></a>
 		    </div>
