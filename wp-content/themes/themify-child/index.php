@@ -17,7 +17,16 @@
 			<?php while( $latest->have_posts() ) : $latest->the_post(); ?>
 
 				<!--- html for post -->
-				<h2><?php the_title(); ?></h2>
+				<a class="featured-link-wrap" href="<?php the_permalink();?>">
+				<?php $large_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large');
+					echo '<div class="featured-post-wrap" style="background-image: url('. $large_image_url[0] .')">';
+				?>
+
+							<h2><?php the_title(); ?></h2>
+							<p><?php the_date(); ?></p>
+							<p><?php the_excerpt(); ?></p>
+					</div>
+				</a>
 
 			<?php endwhile; ?>
 

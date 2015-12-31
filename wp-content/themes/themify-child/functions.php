@@ -13,4 +13,13 @@
         );
     }
     add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
+
+
+    function wpsites_exclude_latest_post($query) {
+        if ($query->is_home() && $query->is_main_query()) {
+            $query->set( 'offset', '1' );
+        }
+    }
+
+    add_action('pre_get_posts', 'wpsites_exclude_latest_post');
 ?>
