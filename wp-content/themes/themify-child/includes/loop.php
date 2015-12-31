@@ -60,12 +60,7 @@ if ( ! is_single() ) {
 		<?php if ( is_singular() ) : ?>
 			<?php the_content(); ?>
 		<?php else: ?>
-			<?php $entry_content_display = themify_base_get( 'setting-default_archive_content', 'full' ); ?>
-			<?php if ( 'full' == $entry_content_display ) : ?>
-				<?php the_content(); ?>
-			<?php elseif ( 'excerpt' == $entry_content_display ) : ?>
-				<?php the_excerpt(); ?>
-			<?php endif; ?>
+			<?php the_excerpt(); ?>
 		<?php endif; ?>
 
 		<?php edit_post_link(__('Edit', 'themify'), '<span class="edit-button">[', ']</span>'); ?>

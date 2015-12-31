@@ -125,7 +125,7 @@ function sosimple_scripts() {
 
 	wp_enqueue_script( 'sosimple-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
 
-	wp_enqueue_script( 'sosimple-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
+	wp_enqueue_script( 'sosimple-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array( 'jquery' ), '1.0', true  );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -161,18 +161,53 @@ function sosimple_fonts_url() {
 	return $fonts_url;
 
 }
+/**
+ * Enqueue SoSimple Theme Options scripts
+ */
+if($_GET['page'] == 'sosimple'){
+    
+    add_action( 'admin_enqueue_scripts', 'color_picker' );
+
+	function color_picker() {
+		wp_enqueue_style( 'wp-color-picker' );
+	 	wp_enqueue_script( 'iris-init',get_template_directory_uri().'/js/iris-init.js', array( 'wp-color-picker','jquery' ), false, true );
+		wp_enqueue_style( 'genericons', get_template_directory_uri() . '/lib/css/style.css', array(), '' );
+	}
+}
 
 /**
  * Enqueue Google Fonts for custom headers
  */
-function sosimple_admin_scripts() {
+function sosimple_admin_styles() {
 
 	wp_enqueue_style( 'sosimple-fonts', sosimple_fonts_url(), array(), null );
 
 }
-add_action( 'admin_print_styles-appearance_page_custom-header', 'sosimple_admin_scripts' );
+add_action( 'admin_print_styles-appearance_page_custom-header', 'sosimple_admin_styles' );
 
+/**
+ * Add admin notices
+ */
 
+add_action( 'current_screen', 'thisScreen' );
+function thisScreen() {
+    $currentScreen = get_current_screen();
+    if( $currentScreen->id === "dashboard" ) {
+       add_action( 'admin_notices', 'donation_notice' );
+    }   
+}
+
+function donation_notice() {
+	$donation ='<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top"> <input type="hidden" name="cmd" value="_s-xclick"> <input type="hidden" name="hosted_button_id" value="WXBHRPGYKGMWQ"> <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"> <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></form>';?>
+	<div class="updated notice notice-success is-dismissible donate"> <?php echo $donation; ?> <p><?php _e( '<b>Hi! This is Fernando, developer of the SoSimple theme :)</b>. I am doing my best to make SoSImple the perfect free theme for you. If you think it helped you in any way to build a better web presence, please support its continued development and updates with a donation of $20, $50,...', 'sosimple' ); ?></p></div>
+	<?php
+}
+
+function donation_style() {
+	echo '<style type="text/css">.donate{border:1px solid rgba(0,0,0,0);}.donate:hover{-moz-transform:scale(1.01);-webkit-transform:scale(1.01);-o-transform:scale(1.01);-ms-transform:scale(1.01);transform:scale(1.01);border:1px solid #B2DE69;-webkit-transition:all 100ms ease;-moz-transition:all 100ms ease;-ms-transition:all 100ms ease;-o-transition:all 100ms ease;transition:all 100ms ease;}.donate{position:relative;padding-left:100px !important;-webkit-transition:all 200ms ease;-moz-transition:all 200ms ease;-ms-transition:all 200ms ease;-o-transition:all 200ms ease;transition:all 200ms ease;}.donate form{position:absolute;top:14px;left:7px;}</style>';
+}
+
+add_action('admin_head', 'donation_style');
 /**
  * Implement the Custom Header feature.
  */
@@ -197,3 +232,18 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+/**
+ * Load admin options file.
+ */
+require get_template_directory() . '/lib/admin.php';
+
+/**
+ * Load more link customizzrion
+ */
+require get_template_directory() . '/lib/more-link.php';
+
+/**
+ * Load more link css
+ */
+require get_template_directory() . '/lib/style.php';

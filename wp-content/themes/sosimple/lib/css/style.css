@@ -1,0 +1,122 @@
+.wrap.ss_options .ss_header{
+	padding: 2%;
+    color: #fff;
+    background: #16181b;
+    display: inline-block;
+    width: 96%;
+}
+
+.wrap.ss_options a{
+    color: #7abe51;
+}
+
+
+.wrap.ss_options .ss_header h1{
+    color: #fff;
+    margin: 7px 0;
+}
+
+.wrap.ss_options .ss_header .ss_header_left{
+	float: left;
+    width: 50%;
+}
+
+.wrap.ss_options .ss_header .ss_header_left img{
+	float: left;
+    max-width: 53px;
+    margin-right: 10px;	
+}
+
+.wrap.ss_options .ss_header .ss_header_right{
+	float: right;
+    width: 50%;
+    text-align: right;
+}
+
+.wrap.ss_options form .ss_info{
+	width: 96%;
+    display: inline-block;
+    padding: 2%;
+}
+
+.wrap.ss_options form table{
+	width: 100%;
+    display: inline-block;
+}
+
+
+.wrap.ss_options form{
+    background: #fff;
+}
+
+.wrap.ss_options form h3{
+    display: none;
+}
+
+.wrap.ss_options form tbody{
+	width: 100%;
+    display: inline-block;
+}
+
+.wrap.ss_options form tbody tr{
+	width: 96%;
+    padding: 0 2%;
+    display: inherit;
+}
+
+.wrap.ss_options form tbody tr{
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+	border: 1px solid rgba(0,0,0,0);
+}
+
+.wrap.ss_options form tbody tr:hover{
+	-moz-transform: scale(1.01);
+	-webkit-transform: scale(1.01);
+	-o-transform: scale(1.01);
+	-ms-transform: scale(1.01);
+	transform: scale(1.01);
+	-webkit-transition: all 100ms ease;
+	-moz-transition: all 100ms ease;
+	-ms-transition: all 100ms ease;
+	-o-transition: all 100ms ease;
+	transition: all 100ms ease;
+	background-color: #ecf5e9;
+	border: 1px solid #d0e2cb;
+}
+
+.wrap.ss_options form tbody tr:hover th{
+}
+
+.wrap.ss_options p.submit{
+    padding: 0;
+}
+
+.wrap.ss_options p.submit input{
+	background: #7abe51;
+    border: 0;
+    color: #fff;
+    text-transform: uppercase;
+    line-height: 2em;
+    height: auto;
+    width: 100%;
+    padding: 1% 2%;
+    border-radius: 0;
+    font-size: 150%;
+}
+
+.wrap.ss_options p.submit input:hover{
+	-moz-transform: scale(1.01);
+	-webkit-transform: scale(1.01);
+	-o-transform: scale(1.01);
+	-ms-transform: scale(1.01);
+	transform: scale(1.01);
+	-webkit-transition: all 100ms ease;
+	-moz-transition: all 100ms ease;
+	-ms-transition: all 100ms ease;
+	-o-transition: all 100ms ease;
+	transition: all 100ms ease;
+}

@@ -6,10 +6,10 @@
  *
  * @package SoSimple
  */
-
 ?>
 
-	</div><!-- #content -->
+</div><!-- #content -->
+	<!-- Some more link css -->
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="site-info">

@@ -4,7 +4,7 @@ Contributors: automattic
 Tags: gray, white, custom-background, custom-header, custom-menu, flexible-header, editor-style, post-formats, one-column, two-columns, right-sidebar, full-width-template, rtl-language-support, translation-ready, fixed-layout, responsive-layout
 
 Requires at least: 4.0
-Tested up to: 4.3.1
+Tested up to: 4.4
 Stable tag: 3.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -53,6 +53,22 @@ Brand your site and make it yours with Jetpack (http://jetpack.me) by including 
 * Custom header image should be at least 937 in width.
 
 == Changelog ==
+
+= 1.1.6 - December 21 2015 =
+* Make donation notice shows only in dashboard page
+* Added simple theme option for read more link
+
+= 1.1.5 - December 20 2015 =
+* Fix admin action on admin notices
+
+= 1.1.4 - December 19 2015 =
+* Add some paypal donation button
+
+= 1.1.3 - December 18 2015 =
+* Capitalize Titles 
+
+= 1.1.2 - November 14 2015 =
+* Add word wrapping rules in the css 
 
 = 1.1.1 - November 07 2015 =
 * Add proper css to edit post link

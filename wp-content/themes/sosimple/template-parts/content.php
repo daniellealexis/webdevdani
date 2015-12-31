@@ -23,10 +23,7 @@
 		</div>
 	<?php endif; ?>
 	<div class="entry-content">
-		<?php
-			the_excerpt();
-		?>
-
+		<?php more_link(); ?>
 		<?php
 			wp_link_pages( array(
 				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'sosimple' ),

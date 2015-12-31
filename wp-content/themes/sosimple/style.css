@@ -4,7 +4,7 @@ Theme URI: https://wordpress.org/themes/sosimple/
 Author: fernando villamor jr
 Author URI: http://fernandovillamorjr.com
 Description: A clean, responsive simple theme for simple websites.
-Version: 1.1.1
+Version: 1.1.6
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: sosimple
@@ -1947,6 +1947,7 @@ div.sharedaddy div.sd-block {
 
     .entry-title {
         font-size: 32px;
+        text-transform: capitalize;
     }
 
     .content-area {
@@ -2098,4 +2099,9 @@ div.sharedaddy div.sd-block {
     padding: 0 10px;
     margin: 0 5px;
     color: white !important;
+}
+
+.entry-content, .entry-summary, .page-content, .comment-content {
+    -moz-hyphens: auto;
+    word-wrap: break-word;
 }
