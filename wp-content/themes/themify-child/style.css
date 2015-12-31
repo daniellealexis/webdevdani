@@ -1,0 +1,14 @@
+/*
+ Theme Name:   Themify Child
+ Theme URI:    http://localhost:8888/daniwebdev
+ Description:  Themify Child Theme
+ Author:       Danielle Alexis
+ Author URI:   http://localhost:8888/
+ Template:     themify-base
+ Version:      1.0.0
+ License:      GNU General Public License v2 or later
+ License URI:  http://www.gnu.org/licenses/gpl-2.0.html
+ Tags:         light, dark, two-columns, right-sidebar, responsive-layout, accessibility-ready
+ Text Domain:  themify-child
+*/
+h1{color:#9f6b78 !important}ul{list-style:none;margin:0}body{background-color:#fff}.site-header{padding-bottom:0}.site-branding > *{display:inline-block}.site-branding hgroup{height:56px;vertical-align:top;width:125px;}.site-branding hgroup .site-title{line-height:56px}.navatar{max-width:76px;max-height:76px;margin-top:-10px}.header-side{width:calc(50% - 130px);}.header-side.left{border-right:3px solid #eee}.header-side.right{border-left:3px solid #eee}.header-side ul.header-side-top{border-bottom:3px solid #eee}.header-side ul li.header-side-item{display:inline-block;padding-left:1em}.main-navigation{padding-top:0}.main-navigation,.site-header{border-color:#eee}
