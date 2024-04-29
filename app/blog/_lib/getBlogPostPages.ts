@@ -1,49 +1,65 @@
 import 'server-only';
 
 import { cache } from 'react';
-import { isFullPage } from '@notionhq/client';
 
-import { getDatabaseRows } from '@/notionApi';
-import { getPlainTextFromRichText } from '@/notionRendering/utils';
+import { getDatabaseRows, PageObject } from '@/notionApi';
+import { getPlainTextFromRichText } from '@/notionRendering/utils/getPlainTextFromRichText';
+
+type PropertyValueType = ReturnType<typeof getPropertyValueFromPageProperties>;
 
 type BlogPostPage = {
   pageId: string;
   title: string;
   slug: string;
   description: string;
-  publishedDate: Date | null;
-  tags?: Array<unknown>;
+  publishedDate: Date;
+  tags: Extract<PropertyValueType, Array<{ id: string }>>;
 };
+
+function getPropertyValueFromPageProperties(
+  propertyName: string,
+  properties: PageObject['properties']
+) {
+  const propertyObject = properties[propertyName];
+
+  if (!propertyObject) {
+    throw new Error(`"${propertyName}" property not found on blog page`);
+  }
+
+  switch (propertyObject.type) {
+    case 'title':
+      return getPlainTextFromRichText(propertyObject.title);
+      break;
+    case 'rich_text':
+      return getPlainTextFromRichText(propertyObject.rich_text);
+    case 'date':
+      return propertyObject.date?.start
+        ? new Date(propertyObject.date.start)
+        : new Date();
+    case 'multi_select':
+      return propertyObject.multi_select || [];
+    default:
+      return '';
+  }
+}
 
 export const getBlogPostPages = cache(async (): Promise<BlogPostPage[]> => {
   const databaseRows = await getDatabaseRows();
 
-  // TODO: Make extract helper for getting these values
-
-  return databaseRows.results.filter(isFullPage).map((row) => {
+  return databaseRows.map((row) => {
     return {
       pageId: row.id,
-      title:
-        row.properties.Title.type === 'title'
-          ? getPlainTextFromRichText(row.properties.Title.title)
-          : '',
-      slug:
-        row.properties.Slug.type === 'rich_text'
-          ? getPlainTextFromRichText(row.properties.Slug.rich_text)
-          : '',
-      description:
-        row.properties.Description.type === 'rich_text'
-          ? getPlainTextFromRichText(row.properties.Description.rich_text)
-          : '',
-      publishedDate:
-        row.properties['Published Date'].type === 'date' &&
-        row.properties['Published Date'].date?.start
-          ? new Date(row.properties['Published Date'].date?.start)
-          : new Date(),
-      tags:
-        row.properties.Tags.type === 'multi_select'
-          ? row.properties.Tags.multi_select
-          : [],
-    };
+      title: getPropertyValueFromPageProperties('Title', row.properties),
+      slug: getPropertyValueFromPageProperties('Slug', row.properties),
+      description: getPropertyValueFromPageProperties(
+        'Description',
+        row.properties
+      ),
+      publishedDate: getPropertyValueFromPageProperties(
+        'Published Date',
+        row.properties
+      ),
+      tags: getPropertyValueFromPageProperties('Tags', row.properties),
+    } as BlogPostPage;
   });
 });
