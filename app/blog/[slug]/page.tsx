@@ -3,6 +3,7 @@ import { Metadata, ResolvingMetadata } from 'next';
 import { getChildrenBlocksFromBlockId } from '@/notionApi';
 import { getBlogPostPages } from '../_lib/getBlogPostPages';
 import { getBlogPostFromSlug } from '../_lib/getBlogPostFromSlug';
+import { NotionPageRenderer } from '@/notionRendering';
 
 type BlogPageProps = {
   params: { slug: string };
@@ -52,7 +53,8 @@ export default async function BlogPage({ params }: BlogPageProps) {
   return (
     <div>
       <h1>{data.title}</h1>
-      <pre>{JSON.stringify(data, null, 2)}</pre>
+      {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
+      <NotionPageRenderer blocks={data.blocks} />
     </div>
   );
 }
